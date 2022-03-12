@@ -5,17 +5,11 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
 
 ### IntelliJ IDEA ###
 .idea
@@ -25,17 +19,6 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
-
 
  *.iml
  modules.xml
@@ -58,6 +41,10 @@ out/
 
 # CodeStream plugin
 .idea/codestream.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
 
 ### Java ###
 # Compiled class file
