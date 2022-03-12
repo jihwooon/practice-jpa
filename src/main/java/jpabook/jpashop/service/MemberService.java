@@ -9,13 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
 
     //회원 가입
-    @Transactional(readOnly = true)
+    @Transactional
     public Long join(Member member) {
         validateDuplicateMember(member);
         memberRepository.save(member);
