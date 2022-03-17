@@ -44,10 +44,9 @@ public class MemberApiController {
         .map(m -> new MemberDto(m.getName()))
         .collect(Collectors.toList());
 
-    return new Result(collect.size(),collect);
+    return new Result(collect.size(), collect);
 
   }
-
 
   //parameter insert DTO
   @PostMapping("/api/v2/members")
