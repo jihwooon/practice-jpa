@@ -42,6 +42,8 @@ public class OrderSimpleApiController {
     return result;
   }
 
+  //TODO : v3 페치 조인
+
   @Data
   static class SimpleOrderDto {
     private Long orderid;
