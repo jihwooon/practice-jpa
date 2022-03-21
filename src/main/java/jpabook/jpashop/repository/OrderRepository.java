@@ -8,12 +8,7 @@ import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,15 +36,15 @@ public class OrderRepository {
         //주문 상태 검색
         if (orderSearch.getOrderStatus() != null) {
             Predicate status = cb.equal(o.get("status"),
-                orderSearch.getOrderStatus());
+                    orderSearch.getOrderStatus());
             criteria.add(status);
         }
 
         //회원 이름 검색
         if (StringUtils.hasText(orderSearch.getMemberName())) {
             Predicate name =
-                cb.like(m.<String>get("name"), "%" +
-                    orderSearch.getMemberName() + "%");
+                    cb.like(m.<String>get("name"), "%" +
+                            orderSearch.getMemberName() + "%");
             criteria.add(name);
 
         }
@@ -65,4 +60,5 @@ public class OrderRepository {
                         " join fetch o.delivery d", Order.class
         ).getResultList();
     }
+
 }
