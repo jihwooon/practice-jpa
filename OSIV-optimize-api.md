@@ -6,9 +6,11 @@
 * Open EntityManager In View: JPA (관례상 OSIV라 한다.)
 
 **OSIV ON**
+![실전! 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화 v2021-08-05 pdf 2022-03-27 20-30-27](https://user-images.githubusercontent.com/68071599/160279770-b9b2b745-862c-4275-a333-2273f668cbf3.jpg)
 
 
-`spring.jpa.open-in-view` : true 기본값  
+* `spring.jpa.open-in-view` : true 기본값  
+
 이 기본값을 뿌리면서 애플리케이션 시작 시점에 warn 로그를 남기는 것은 이유가 있다.  
 OSIV 전략은 트랜잭션 시작처럼 최초 데이터베이스 커넥션 시작 시점부터 API 응답이 끝날 때 까지 영속성 컨텍스트와 데이터베이스 커넥션을 유지한다.   
 그래서 지금까지 View Template이나 API 컨트롤러에서 지연 로딩이 가능했던 것이다.  
@@ -18,6 +20,7 @@ OSIV 전략은 트랜잭션 시작처럼 최초 데이터베이스 커넥션 시
 예를 들어서 컨트롤러에서 외부 API를 호출하면 외부 API 대기 시간 만큼 커넥션 리소스를 반환하지 못하고, 유지해야 한다.
 
 **OSIV OFF**
+![실전! 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화 v2021-08-05 pdf 2022-03-27 20-32-41](https://user-images.githubusercontent.com/68071599/160279776-debd345c-fc56-436b-8ff1-fb857475e56c.jpg)
 
 
 * `spring.jpa.open-in-view: false` OSIV 종료  
