@@ -7,10 +7,10 @@ import lombok.Setter;
 @Setter
 public class UpdateItemDto {
 
-  private String name;
+    private String name;
 
-  private int price;
+    private int price;
 
-  private int stockQuantity;
+    private int stockQuantity;
 
 }

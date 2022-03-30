@@ -4,9 +4,8 @@ import jpabook.jpashop.domain.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.websocket.server.ServerEndpoint;
-
-@Getter @Setter
+@Getter
+@Setter
 public class OrderSearch {
     private String memberName;
     private OrderStatus orderStatus;
