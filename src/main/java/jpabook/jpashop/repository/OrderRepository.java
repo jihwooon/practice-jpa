@@ -14,11 +14,18 @@ import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jpabook.jpashop.domain.QOrder.order;
+
 @Repository
-@RequiredArgsConstructor
 public class OrderRepository {
 
     private final EntityManager em;
+    private final JPAQueryFactory query;
+
+    public OrderRepository(EntityManager em) {
+        this.em = em;
+        this.query = new JPAQueryFactory(em);
+    }
 
     public void save(Order order) {
         em.persist(order);
@@ -75,6 +82,14 @@ public class OrderRepository {
                 .getResultList();
     }
 
+    public List<Order> findAll1(OrderSearch orderSearch) {
+        return query
+                .select(order)
+                .from(order)
+                .where(statusEq(orderSearch.getOrderStatus()))
+                .fetch();
+    }
+
     public List<Order> findAll(OrderSearch orderSearch) {
         JPAQueryFactory query = new JPAQueryFactory(em);
         QOrder order = QOrder.order;
@@ -100,7 +115,7 @@ public class OrderRepository {
         if (statusCond == null) {
             return null;
         }
-        return QOrder.order.status.eq(statusCond);
+        return order.status.eq(statusCond);
     }
 
 
