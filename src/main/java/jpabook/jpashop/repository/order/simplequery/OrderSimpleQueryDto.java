@@ -23,5 +23,4 @@ public class OrderSimpleQueryDto {
         this.address = address;
     }
 
-
 }
