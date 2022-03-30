@@ -1,6 +1,7 @@
 package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.MemberRepositoryOld;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,26 +14,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberRepositoryOld memberRepositoryOld;
+    private final MemberRepository memberRepository;
 
     @Transactional
     public Long join(Member member) {
 
         validateDuplicateMember(member);
-        memberRepositoryOld.save(member);
+        memberRepository.save(member);
         return member.getId();
     }
 
     public List<Member> findMembers() {
-        return memberRepositoryOld.findAll();
+        return memberRepository.findAll();
     }
 
     public Member findOne(Long memberId) {
-        return memberRepositoryOld.findOne(memberId);
+        return memberRepository.findOne(memberId);
     }
 
     private void validateDuplicateMember(Member member) {
-        List<Member> findMembers = memberRepositoryOld.findByName(member.getName());
+        List<Member> findMembers = memberRepository.findByName(member.getName());
         if (!findMembers.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
@@ -40,7 +41,7 @@ public class MemberService {
 
     @Transactional
     public void update(Long id, String name) {
-        Member member = memberRepositoryOld.findOne(id);
+        Member member = memberRepository.findOne(id);
         member.setName(name);
     }
 }

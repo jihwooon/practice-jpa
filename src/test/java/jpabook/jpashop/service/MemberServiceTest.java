@@ -21,7 +21,7 @@ public class MemberServiceTest {
     MemberService memberService;
 
     @Autowired
-    MemberRepositoryOld memberRepositoryOld;
+    MemberRepositoryOld memberRepository;
 
     @Autowired
     EntityManager em;
@@ -38,7 +38,7 @@ public class MemberServiceTest {
         Long saveId = memberService.join(member);
 
         //then
-        assertEquals(member, memberRepositoryOld.findOne(saveId));
+        assertEquals(member, memberRepository.findOne(saveId));
     }
 
     @Test
